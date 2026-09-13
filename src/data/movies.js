@@ -1,0 +1,66 @@
+// Data sementara untuk sesi 1.
+// Sesi 3 array ini diganti hasil fetch dari API, sesi 8 diganti API Laravel kita sendiri.
+// Nama fieldnya sengaja dibuat konsisten supaya component tidak perlu diubah.
+
+export const movies = [
+  {
+    id: 1,
+    title: 'Neon Orbit',
+    year: 2026,
+    mediaType: 'Movie',
+    genre: 'Sci-Fi',
+    image: '/posters/neon-orbit.jpg',
+    rating: 8.7,
+    comments: 12,
+  },
+  {
+    id: 2,
+    title: 'Last Signal',
+    year: 2025,
+    mediaType: 'Series',
+    genre: 'Thriller',
+    image: '/posters/last-signal.jpg',
+    rating: 7.9,
+    comments: 8,
+  },
+  {
+    id: 3,
+    title: 'The Far Shore',
+    year: 2026,
+    mediaType: 'Movie',
+    genre: 'Drama',
+    image: '/posters/the-far-shore.jpg',
+    rating: 8.3,
+    comments: 16,
+  },
+  {
+    id: 4,
+    title: 'Hollow House',
+    year: 2025,
+    mediaType: 'Series',
+    genre: 'Thriller',
+    image: '/posters/hollow-house.jpg',
+    rating: 7.6,
+    comments: 21,
+  },
+  {
+    id: 5,
+    title: 'Chrome Runner',
+    year: 2026,
+    mediaType: 'Movie',
+    genre: 'Sci-Fi',
+    image: '/posters/chrome-runner.jpg',
+    rating: 9.1,
+    comments: 32,
+  },
+  {
+    id: 6,
+    title: 'Starling',
+    year: 2026,
+    mediaType: 'Movie',
+    genre: 'Animation',
+    image: '/posters/starling.jpg',
+    rating: 8.8,
+    comments: 18,
+  },
+]
