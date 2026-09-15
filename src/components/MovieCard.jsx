@@ -1,19 +1,20 @@
-import MovieMeta from "./movie/MovieMeta"
-import MoviePoster from "./movie/MoviePoster"
-import Badge from "./ui/Badge"
+import { FiMessageCircle, FiStar } from 'react-icons/fi'
 
-export default function MovieCard({title, year, mediaType, image, rating, comments, quality = 'WEB DOWNLOAD'}){
-    return(
-        <article className="movie-card">
-            <div className="poster">
-                <MoviePoster src={image} alt={`Poster ${title}`}>
-                <Badge variant="media">{mediaType}</Badge>
-                <Badge variant="quality">{quality}</Badge>
-                <MovieMeta rating={rating} comments={comments} />
-                </MoviePoster>
-            </div>
-
-            <h2 className="movie-title">{title} ({year})</h2>
-        </article>
-    )
+function MovieCard({ movie }) {
+  return (
+    <article className="movie-card">
+      <div className="poster">
+        <img className="poster-image" src={movie.image} alt={`Poster ${movie.title}`} />
+        <span className="badge badge-media">{movie.mediaType}</span>
+        <span className="badge badge-quality">{movie.quality ?? 'WEB-DL'}</span>
+        <div className="poster-meta">
+          <span className="poster-rating"><FiStar aria-hidden="true" /> {movie.rating}</span>
+          <span><FiMessageCircle aria-hidden="true" /> {movie.comments}</span>
+        </div>
+      </div>
+      <h2 className="movie-title">{movie.title} ({movie.year})</h2>
+    </article>
+  )
 }
+
+export default MovieCard

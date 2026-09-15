@@ -1,11 +1,11 @@
-import MovieCard from "./MovieCard";
+import MovieCard from './MovieCard'
 
-export default function MovieGrid({movies}){
-    return(
-        <section className="movie-grid">
-            {movies.map((movie) => (
-                <MovieCard key={movie.id} {...movie}/>
-            ))}
-        </section>
-    )
+function MovieGrid({ movies }) {
+  return (
+    <div className="movie-grid" aria-label="Daftar film versi single component">
+      {movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+    </div>
+  )
 }
+
+export default MovieGrid

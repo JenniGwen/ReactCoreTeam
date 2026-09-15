@@ -1,8 +1,13 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
+  --text: #a1a1aa;
+  --text-h: #f4f4f5;
+  --bg: #09090b;
+  --border: #27272a;
+  --line: #3f3f46;
+  --line-soft: #52525b;
+  --surface: #18181b;
+  --text-dim: #d4d4d8;
+  --star: #facc15;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
   --accent-bg: rgba(170, 59, 255, 0.1);
@@ -17,7 +22,7 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  color-scheme: dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -30,36 +35,17 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
 body {
   margin: 0;
+  min-width: 320px;
+  background: var(--bg);
 }
 
 #root {
   width: 1126px;
   max-width: 100%;
   margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
+  text-align: left;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -74,13 +60,9 @@ h2 {
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+  margin: 0;
+  font-size: clamp(24px, 4vw, 34px);
+  letter-spacing: -0.8px;
 }
 h2 {
   font-size: 24px;
@@ -124,14 +106,17 @@ code {
   margin: 12px auto 0;
   padding: 0 16px;
   border-radius: 16px;
-  background: black;
+  box-sizing: border-box;
+  background: rgb(9 9 11 / 88%);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
 }
 
 .nav-menu {
   display: flex;
   gap: 4px;
   margin-right: auto;
-  color: aqua;
+  color: #67e8f9;
   text-decoration: none;
   font-weight: bold;
 }
@@ -146,12 +131,58 @@ code {
 }
 
 .nav-item:hover {
-  color: aqua;
+  color: #67e8f9;
 }
 
 .nav-item-active {
   color: white;
-  background: blue;
+  background: #2563eb;
+}
+
+/* ---------- Pembeda versi ---------- */
+
+.showcase {
+  display: grid;
+  gap: 64px;
+  padding: 56px 24px 72px;
+}
+
+.showcase-section {
+  min-width: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-heading p {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.section-tag {
+  flex: none;
+  margin-top: 4px;
+  padding: 5px 9px;
+  border: 1px solid #1d4ed8;
+  border-radius: 999px;
+  background: rgb(30 64 175 / 28%);
+  color: #93c5fd;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.section-tag-nested {
+  border-color: #7e22ce;
+  background: rgb(107 33 168 / 28%);
+  color: #d8b4fe;
 }
 
 /* ---------- Kartu film ---------- */
@@ -173,6 +204,11 @@ code {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 200ms ease;
+}
+
+.poster:hover .poster-image {
+  transform: scale(1.025);
 }
 
 .movie-title {
@@ -226,6 +262,12 @@ code {
   color: var(--text-dim);
 }
 
+.poster-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .poster-rating {
   color: var(--star);
   font-weight: 600;
@@ -237,5 +279,37 @@ code {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 24px 12px;
-  padding: 24px;
+}
+
+@media (max-width: 800px) {
+  .movie-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .navbar {
+    gap: 8px;
+  }
+
+  .nav-item {
+    padding-inline: 7px;
+  }
+}
+
+@media (max-width: 520px) {
+  .showcase {
+    gap: 48px;
+    padding: 36px 16px 56px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-heading {
+    flex-direction: column;
+  }
+
+  .navbar nav .nav-item:nth-child(n + 2) {
+    display: none;
+  }
 }
